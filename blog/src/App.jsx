@@ -1,8 +1,10 @@
 import { useState , useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import {AuthService} from './appwrite/auth'
+import {authService} from './appwrite/auth'
 import { login , logout } from './store/authSlice'
 import './App.css'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 function App() {
  const [loading , setLoading] = useState(false)
@@ -27,15 +29,22 @@ useEffect(()=> {
       },[])
    
      
-  return !loading ? <h1>Loading....</h1> : null
+return !loading ? (
+  <div className='min-h-screen flex flex-wrap
+  justify-center items-center bg-grey-400'>
+   <div className='w-full block'>
+    <Header/>
+    <main>
+      {/* <Outlet /> */}
+    </main>
+    <Footer/>
+   </div>
+  </div>
+)
+
+: null
 
 
-
-  return (
-    <>
-      <div> <h1>A blog app with appwrite</h1></div>
-    </>
-  )
 }
 
 export default App
